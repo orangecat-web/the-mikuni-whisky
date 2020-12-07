@@ -1,0 +1,509 @@
+@charset "utf-8"
+// Google Fonts
+// noto 繁 簡 日, 黑體 宋體
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700')
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,300,400,700&amp;subset=japanese')
+// Roboto
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700')
+// bootstrap & fontawesom
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css')
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css')
+
+// 全域設定
+$main-width: 100vw
+$main-color: #0f0c0a
+$sub-color: #cc7400
+$footer-color: #686868
+$copyright-color: #686868
+$title-color: #cc7400
+$main-border: 1px solid #fff
+// link color
+$link-color: #0f0c0a
+$link-hover: #cc7400
+// nav color
+$nav-bg: url("../images/layout/bg-header.png") left top repeat-x
+$nav-color: #fff
+$nav-hover: #cc7400
+// toggler color
+$toggler: #fff
+$toggler-hover: #cc7400
+// moblie nav color
+$mobile: rgba(247,147,30,.9)
+$mobile-color: #fff
+$mobile-hover: #f60
+// button
+$button: #00a316
+$button-hover: #fff
+$button-radius: 0
+// button submit
+$submit: #f92f19
+$submit-hover: #b72015
+// button reset
+$reset: #999
+$reset-hover: #333
+// form border
+$form: #000
+$form-hover: #164e8f
+$form-focus: #94be10
+// font size & font weight
+$main-size: 1rem
+$font-color: #333
+$fw100: 100
+$fw200: 200
+$fw300: 300
+$fw400: 400
+$fw500: 500
+$fw600: 600
+$fw700: 700
+$fw800: 800
+$fw900: 900
+
+html
+	min-height: 100%
+	font-size: 16px
+body
+	// fonts
+	h1
+		font-size: $main-size * 2
+	h2
+		font-size: $main-size * 1.75
+	h3
+		font-size: $main-size * 1.5
+	p
+		font-size: $main-size
+	sup
+		font-size: $main-size / 1.25
+		color: #f00
+
+	//連結顏色設定
+	a
+		color: $link-color
+		text-decoration: none !important
+		&:visited
+			color: $link-color
+		&:hover
+			color: $link-hover
+
+// 主選單設定
+@mixin main-nav
+	+pb-0
+	// 行動裝置選單按鈕
+	.navbar-toggler
+		// border: $main-border
+		border-color: $toggler
+		padding: .5rem
+		+px-1
+		&:hover
+			background: none
+			border-color: $toggler-hover
+		i
+			color: $toggler
+			&:before, &:after
+				+m-0
+			&:hover
+				color: $toggler-hover
+	// 主選單
+	.navbar-collapse
+		background: none
+		.navbar-nav
+			width: 100%
+			.nav-item
+				.nav-link
+					padding: .5rem rem 0 0
+					p
+						font-size: $main-size
+						font-weight: $fw300
+						color: $nav-color
+						+mb-0
+						&:hover
+							font-weight: $fw600
+							color: $nav-hover
+					&:hover
+						background: url("../images/layout/bg-nav.png") left bottom no-repeat
+						background-size: contain
+				select
+					background: rgba(0,0,0,0)
+					border: none
+					font-size: $main-size * 1.15
+					color: #fff
+					+p-1
+					option
+						background: rgba(255,164,31,1)
+						font-size: $main-size * 1.15
+						color: #fff
+			// 下拉設定
+			.dropdown
+				position: initial
+				// 重要!!設定滑鼠滑過出現次選單
+				&:hover
+					.dropdown-menu
+						display: block
+				// 次選單設定
+				.dropdown-menu
+					width: 100%
+					border: none
+					border-radius: 0
+					+p-0
+					// border-bottom-right-radius: .5rem
+					// border-bottom-left-radius: .5rem
+					// box-shadow: 0px 2px 5px rgba(0,0,0,.5)
+					// overflow-y: hidden
+					top: 3.75rem
+					li
+						width: 685px
+						margin: 0 auto
+						dl
+							+mx-0
+							+mb-0
+							padding-left: 8rem
+							+py-1
+							dd
+								+mb-0
+						.dropdown-item
+							border-bottom: $main-border
+							border-color: #999
+							font-weight: $fw500
+							color: $nav-color
+							+p-0
+							&:hover
+								background: none
+								color: $nav-hover
+						&:last-of-type
+							.dropdown-item
+								border-bottom: none
+				// dropdown icon
+				.dropdown-toggle
+					&::after
+						display: none
+
+// 行動裝置主選單
+// Canvas
+[canvas]
+	z-index: 1
+[canvas=container]
+	width: 100%
+	height: 100%
+	overflow-y: auto
+	position: relative
+	// Enables momentum scrolling on iOS devices, may be removed by setting to 'auto' in your own CSS.
+	-webkit-overflow-scrolling: touch
+	&:before, &:after
+		clear: both
+		content: ''
+		display: table
+// Off-Canavs
+[off-canvas]
+	display: none
+	position: fixed
+	overflow: hidden
+	overflow-y: auto
+	-webkit-overflow-scrolling: touch
+[off-canvas*=top]
+	width: 100%
+	height: 255px
+	top: 0
+[off-canvas*=right]
+	width: 255px
+	height: 100%
+	top: 0
+	right: 0
+[off-canvas*=bottom]
+	width: 100%
+	height: 255px
+	bottom: 0
+[off-canvas*=left]
+	width: 255px
+	height: 100%
+	top: 0
+	left: 0
+[off-canvas*=reveal]
+	z-index: 0
+[off-canvas*=push]
+	z-index: 1
+[off-canvas*=overlay]
+	z-index: 9999
+[off-canvas*=shift]
+	z-index: 9
+// Animation
+[canvas], [off-canvas]
+	-webkit-transform: translate( 0, 0 )
+	-ms-transform: translate( 0, 0 )
+	transform: translate( 0, 0 )
+	-webkit-transition: -webkit-transform 300ms
+	transition: transform 300ms
+	-webkit-backface-visibility: hidden
+[off-canvas*=shift][off-canvas*=top]
+	-webkit-transform: translate( 0, 50% )
+	transform: translate( 0, 50% )
+[off-canvas*=shift][off-canvas*=right]
+	-webkit-transform: translate( -50%, 0 )
+	transform: translate( -50%, 0 )
+[off-canvas*=shift][off-canvas*=bottom]
+	-webkit-transform: translate( 0, -50% )
+	transform: translate( 0, -50% )
+[off-canvas*=shift][off-canvas*=left]
+	-webkit-transform: translate( 50%, 0 )
+	transform: translate( 50%, 0 )
+[class*=js-]
+	cursor: pointer
+// Print
+@media print
+	[canvas]
+		-webkit-transform: translate( 0px, 0px ) !important
+		-ms-transform: translate( 0px, 0px ) !important
+		transform: translate( 0px, 0px ) !important
+	[off-canvas]
+		display: none !important
+// 行動裝置主選單
+@mixin slidebars
+	width: 100vw
+	background: $mobile
+	+p-1
+	.closeBtn
+		+tar
+		+mb-1
+		button
+			background: none
+			border: none
+			color: $mobile-color
+			&:hover
+				color: $mobile-hover
+	.mobileNav
+		+tac
+		+mb-0
+		dd
+			border-bottom: $main-border
+			+mb-1
+			+pb-1
+			a
+				font-size: $main-size * 1.5
+				font-weight: $fw300
+				color: $mobile-color
+				&:hover
+					color: $mobile-hover
+
+@mixin fonts
+	font-family: 'Roboto', 'Noto Sans JP', 'Noto Sans TC', 'Font Awesome\ 5 Free', sans-serif
+	font-size: $main-size
+	font-weight: $fw400
+	color: $font-color
+@mixin tac
+	text-align: center
+@mixin tar
+	text-align: right
+@mixin tal
+	text-align: left
+
+// 單行文字限制
+@mixin signle-line
+	// 單行文字限制
+	overflow: hidden
+	text-overflow: ellipsis
+	white-space: nowrap
+
+// 多行文字限制
+@mixin multi-line($mline)
+	// display: block //如果不是區塊元素的話，要加這一行 exsample <span>
+	overflow: hidden
+	display: -webkit-box
+	-webkit-box-orient: vertical
+	// 填入要顯示的行數 +multi-line(行數)
+	-webkit-line-clamp: $mline
+
+// 寬度不受邊框引響
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+// font awesome 用0
+::before, ::after
+	font-weight: 900
+	margin-right: .5rem
+	margin-left: .5rem
+// 滑鼠手勢
+*[onclick], button
+	cursor: pointer
+// 程式用 不顯示標記
+[hidden]
+	display: none !important
+// RWD img use
+img
+	width: 100%
+	max-width: 100%
+	height: auto !important
+	border: none
+// 漸變效果時間
+@mixin hover-transition
+	-webkit-transition: all 0.30s ease-in-out
+	-moz-transition: all 0.30s ease-in-out
+	-ms-transition: all 0.30s ease-in-out
+	-o-transition: all 0.30s ease-in-out
+
+// 間距設定
+@import spacing
+
+// 漸變效果
+a, button, li, dt, dd, p, input, i, span, figure, figcaption, svg, g, path, ellipse
+	+hover-transition
+
+// more link
+%more-link
+	+tac
+	+my-1
+	a
+		background: $main-color
+		border: none
+		border-radius: 0
+		color: #fff !important
+		padding: .35rem 2rem
+		&:hover
+			background: $sub-color
+			color: #fff
+		&::before, &::after
+			font-size: .9rem
+			margin-left: .25rem
+			margin-right: .25rem
+
+// icon
+@mixin more
+	&::after
+		content: "\f067"
+		+mr-0
+
+@mixin back
+	&::before
+		content: "\f060"
+		+ml-0
+
+@mixin download
+	&::before
+		content: "\f019"
+		+ml-0
+
+// pagination
+@mixin pagination
+	a
+		background: #fff
+		border: none
+		padding: .5rem 1rem
+	a[active]
+		background: none
+
+// 表單設定
+@mixin form
+	width: 100%
+	background: #fff
+	border: $main-border
+	border-radius: .5rem
+	padding: .35rem .75rem
+	outline: none !important
+	&:hover
+		border-color: $form-hover
+	&:focus
+		border-color: $form-focus
+	&::placeholder
+		font-weight: 300
+		color: #ccc
+label
+	color: #fff
+	+mb-0
+input, select, textarea
+	+form
+[type="checkbox"], [type="radio"]
+	width: auto !important
+select
+	padding-bottom: .75rem
+textarea
+	resize: none
+
+%button
+	background: none
+	border: none
+	border-color: $button
+	border-radius: $button-radius
+	color: $button
+	padding: .55rem 1.65rem
+	outline: none
+	&:hover
+		background: $button
+		color: $button-hover
+		outline: none
+button
+	@extend %button
+button[type="submit"]
+	@extend %button
+	background: $submit
+	color: #fff
+	&:hover
+		background: $submit-hover
+button[type="reset"]
+	@extend %button
+	background: $reset
+	border-color: $reset
+	color: #fff
+	&:hover
+		background: $reset-hover
+		color: #fff
+
+// back to top
+.cd-top
+	position: fixed
+	bottom: 40px
+	right: 10px
+	opacity: 0
+	-webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s
+	transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s
+	+tac
+	i
+		color: #fff
+		+mx-1
+.cd-top.cd-top--show,
+.cd-top.cd-top--fade-out,
+.cd-top:hover
+	-webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s
+	transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s
+.cd-top.cd-top--show
+	/* the button becomes visible */
+	visibility: visible
+	opacity: 1
+	z-index: 9999
+.cd-top.cd-top--fade-out
+	/* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+	opacity: .5
+.cd-top:hover
+	opacity: 1
+@media only screen and (min-width: 768px)
+	.cd-top
+		right: 20px
+		bottom: 20px
+@media only screen and (min-width: 1024px)
+	.cd-top
+		right: 30px
+		bottom: 30px
+
+// pagination
+@mixin pagination
+	a
+		border: none
+		color: #0e8dd9
+		padding: .5rem 1rem
+		&:hover
+			background: none
+	a[active]
+		background: none
+		color: #fff
+
+.pagination
+	+pagination
+
+// deitor
+.editor
+	+px-1
+	h2, h3, h4, h5, h6
+		+mt-3
+		+mb-2
+		&:nth-of-type(1)
+			+mt-0
+
+@import tools
+@import list

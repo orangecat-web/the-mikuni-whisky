@@ -1,0 +1,171 @@
+// list text 日期文字上下
+@mixin list-text
+	+mb-0
+	dd
+		+mb-1
+		p
+			+signle-line
+			+mb-0
+			&:first-of-type
+				color: $main-color
+
+// list abreast 日期文字左右
+@mixin list-abreast
+	+mb-0
+	dd
+		+mb-1
+		p
+			+signle-line
+			+mb-0
+			&:first-of-type
+				color: $sub-color
+
+// list img 圖帶標題簡介
+@mixin list-img-intro
+	+mb-0
+	dd
+		+mb-2
+		figure
+			background: #fff
+			border: $main-border
+			border-radius: .5rem
+			+mb-0
+			overflow: hidden
+			>p
+				// box-shadow: 2px 2px 5px rgba(0,0,0,.5)
+				padding: .5rem
+				overflow: hidden
+				img
+					+hover-transition
+					transform: scale(1,1)
+			&:hover
+				border-color: #ef4c00
+				p
+					overflow: hidden
+					img
+						transform: scale(1.2,1.2)
+			figcaption
+				padding: .5rem
+				h3
+					font-size: $main-size * 1.25
+					color: #ef4c00
+					+signle-line
+				p
+					+signle-line
+					+mb-0
+
+// list img 圖帶遮罩
+@mixin list-img-mask
+	+mb-0
+	dd
+		+mb-2
+		figure
+			background: #fff
+			+mb-1
+			position: relative
+			overflow: hidden
+			>p
+				// box-shadow: 2px 2px 5px rgba(0,0,0,.5)
+				+mb-0
+				overflow: hidden
+				img
+					+hover-transition
+					transform: scale(1,1)
+			figcaption
+				display: none
+				width: 100%
+				height: 100%
+				background: rgba(0,0,0,.75)
+				position: absolute
+				z-index: 9999
+				+hover-transition
+				div
+					width: 100%
+					height: 100%
+					span
+						+more
+						color: #fff
+			&:hover
+				p
+					overflow: hidden
+					img
+						transform: scale(1.2,1.2)
+				figcaption
+					display: block
+		h3
+			color: #000
+		p
+			color: $main-color
+			span
+				font-size: $main-size / 1.1
+				padding-right: .5rem
+				&:last-of-type
+					+pr-0
+
+@mixin owlcarousel
+	position: relative
+	.owl-nav
+		+mt-0
+		position: absolute
+		top: -2.5rem
+		right: .5rem
+		button
+			border: $main-border
+			color: #fff
+
+// Responsive
+// EX to SM
+@media (max-width: 767.98px)
+
+// EX to MD
+@media (max-width: 991.98px)
+
+// up to LG
+@media (min-width: 992px)
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px)
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px)
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px)
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px)
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px)
+
+@media (min-width: 1281px)
+
+@media (min-width: 1367px)
+
+@media (min-width: 1441px)
+// iPhone 4S
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape)
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait)
+
+// iPhone 5 & 5S
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait)
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape)
+
+// iPhone 6, 7, & 8
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait)
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape)
+
+// iPhone 6, 7, & 8 Plus
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait)
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : landscape)
+
+// iPhone X
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : portrait)
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape)
+
+// Retina iPad
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2)
+
+// Retina iPad pro
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)

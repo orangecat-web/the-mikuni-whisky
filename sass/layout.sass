@@ -1,0 +1,170 @@
+@import basic
+// 頁面基本設定
+body
+	+fonts
+// more link
+.more
+	@extend %more-link
+	a
+		+more
+		+tac
+.back
+	@extend %more-link
+	a
+		+back
+		+tac
+.download
+	@extend %more-link
+	+download
+
+// back to top
+.cd-top
+	width: 2.5rem
+	background: none
+	border-radius: 0
+	&:hover
+		background-color: none
+	a[active]
+		background: none
+header
+	min-height: 160px
+	background: $nav-bg
+
+footer
+	color: $footer-color
+	+pt-3
+	section
+		width: 85vw
+		+mx-auto
+		dl
+			dd
+				text-transform: uppercase
+
+// list content
+@mixin list-setting
+	dd
+		+mb-1
+		p
+			+signle-line
+			+mb-0
+
+// 一般文字列表
+.list-current
+	+list-setting
+
+// 主選單設定
+nav.navbar
+	+main-nav
+// 行動裝置主選單
+div.slidebars
+	+slidebars
+
+// 分頁連結
+li.page-item
+	+pagination
+
+// Responsive
+@mixin hidden
+	display: none !important
+@mixin block
+	display: block !important
+
+@mixin logosize($logosize)
+	width: $logosize
+
+// EX to SM
+@media (max-width: 767.98px)
+	.deskTop,
+	.Tablets,
+	.deskTopTablets
+		+hidden
+
+
+// EX to MD
+@media (max-width: 991.98px)
+	.deskTop,
+	.Mobile,
+	.mLandscape,
+	.mPortrait
+		+hidden
+
+// up to LG
+@media (min-width: 992px)
+	.Mobile,
+	.Tablets,
+	.TabletsMobile,
+	.mLandscape,
+	.mPortrait
+		+hidden
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px)
+	a.navbar-brand>img
+		+logosize(20vw)
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px)
+	a.navbar-brand>img
+		+logosize(16vw)
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px)
+	a.navbar-brand>img
+		+logosize(12vw)
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px)
+	a.navbar-brand>img
+		+logosize(6.5vw)
+	nav.navbar
+		.navbar-collapse
+			.navbar-nav
+				.nav-item
+					.nav-link
+						p
+							font-size: $main-size / 1.15
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px)
+	a.navbar-brand>img
+		+logosize(9vw)
+	// footer
+
+@media (min-width: 1281px)
+	a.navbar-brand>img
+		+logosize(8.5vw)
+
+@media (min-width: 1367px)
+	a.navbar-brand>img
+		+logosize(8vw)
+	// footer
+
+@media (min-width: 1441px)
+	a.navbar-brand>img
+		+logosize(7vw)
+
+// iPhone 4S
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape)
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait)
+
+// iPhone 5 & 5S
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait)
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape)
+
+// iPhone 6, 7, & 8
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait)
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape)
+
+// iPhone 6, 7, & 8 Plus
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait)
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px) and (orientation : landscape)
+
+// iPhone X
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : portrait)
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape)
+
+// Retina iPad
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2)
+
+// Retina iPad pro
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)
